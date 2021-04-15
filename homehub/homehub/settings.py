@@ -126,3 +126,8 @@ STATIC_URL = '/static/'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+CHROME_DRIVER_PATH = applocals.CHROME_DRIVER_PATH
+WEATHER_API_KEY = applocals.WEATHER_API_KEY
+
