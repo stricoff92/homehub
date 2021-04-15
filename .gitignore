@@ -9,3 +9,5 @@ nohup.out
 
 env/
 __pycache__/
+
+angular_static/
