@@ -3,9 +3,11 @@ import os
 import os.path
 import re
 
-from django.conf import settings
-
 from api.lib.tmp_lib import generate_new_unnamed_tmp_file_name, generate_named_tmp_file
+
+
+IP_ADDRESS_FILE_NAME = "prev-ipv4.txt"
+
 
 
 def get_local_ipv4() -> str:
@@ -20,7 +22,7 @@ def get_local_ipv4() -> str:
 def get_updated_ipv4() -> str:
     """ Check if IPv4 has been updated. Returns None if no change.
     """
-    tmp_file = generate_named_tmp_file(settings.IP_ADDRESS_FILE_NAME)
+    tmp_file = generate_named_tmp_file(IP_ADDRESS_FILE_NAME)
     current_ipv4 = get_local_ipv4()
 
     if not os.path.exists(tmp_file):
