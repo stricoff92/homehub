@@ -5,7 +5,7 @@ import uuid
 from django.conf import settings
 
 
-def generate_new_tmp_file_name(ext="txt") -> str:
+def generate_new_unnamed_tmp_file_name(ext="txt") -> str:
     while True:
         uid = uuid.uuid4().hex
         file_name = os.path.join(settings.BASE_DIR, "tmp", f"{uid}.{ext}")

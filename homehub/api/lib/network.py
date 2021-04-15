@@ -5,11 +5,11 @@ import re
 
 from django.conf import settings
 
-from api.lib.tmp_lib import generate_new_tmp_file_name, generate_named_tmp_file
+from api.lib.tmp_lib import generate_new_unnamed_tmp_file_name, generate_named_tmp_file
 
 
 def get_local_ipv4() -> str:
-    tmp_file = generate_new_tmp_file_name()
+    tmp_file = generate_new_unnamed_tmp_file_name()
     os.system("hostname -I | awk '{ print $1 }' > " + tmp_file) # UNIX only.
     with open(tmp_file, "r") as f:
         address = f.read()
