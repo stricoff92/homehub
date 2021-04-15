@@ -1,0 +1,11 @@
+
+# DO NOT COMMIT THIS FILE!!!
+applocals.py
+
+db.sqlite3
+testdb.sqlite3
+
+*.log
+nohup.out
+
+__pycache__/

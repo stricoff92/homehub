@@ -1,0 +1,3 @@
+#!/bin/bash
+
+./manage.py test $1 --settings=homehub.test_settings
