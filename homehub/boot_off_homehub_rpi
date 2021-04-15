@@ -1,0 +1,24 @@
+#!/bin/bash
+
+# Reboot webserver and chrome instance for a Raspberry Pi.
+
+# Starting message.
+echo "$(date): Booting Off homehub for Raspberry Pi"
+
+# Crash on any errors
+set -e
+
+# Change to correct directory
+SCRIPT_PATH="`dirname \"$0\"`"
+echo "$(date): changing to directory: $SCRIPT_PATH"
+cd "$SCRIPT_PATH"
+
+# Set hubstate to isactive field to true
+../env/bin/python manage.py set_hubstate_isactive_to_false
+
+# Put the monitor to sleep
+tvservice --off
+
+# Ending message.
+echo "$(date): Booting Off Sequence Complete"
+

@@ -29,6 +29,9 @@ done
 # Push notification if IPv4 has updated
 ../env/bin/python manage.py send_ip_update_alert
 
+# Set hubstate to isactive field to true
+../env/bin/python manage.py set_hubstate_isactive_to_true
+
 # Pull Source Code
 git pull
 

@@ -5,11 +5,13 @@ import os.path
 from django.utils import timezone
 from django.conf import settings
 
+from api.lib import environment
+
 
 def create_logger(name:str, level=logging.DEBUG, formatting="%(asctime)s - %(levelname)s - %(message)s"):
     logger = logging.getLogger(name)
     logger.setLevel(level)
-    if settings.ENV = "TESTING":
+    if environment.is_testing():
         handler = logging.NullHandler()
     else:
         file_name = f"{name}-{timezone.now().strftime('%Y-%m-%d%_H%M%S')}.log"
