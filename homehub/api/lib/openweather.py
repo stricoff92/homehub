@@ -25,7 +25,7 @@ class WeatherCacheIsEmptyError(Exception):
 
 
 def fetch_json() -> Dict:
-    weather_source = WeatherSource.objects.filter(is_active=True).first()
+    weather_source = WeatherSource.objects.filter(is_active=True).order_by("-id").first()
     if not weather_source:
         raise NoActiveWeatherSourcesError()
 
