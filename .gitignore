@@ -6,6 +6,8 @@ db.sqlite3
 testdb.sqlite3
 
 *.log
+!tmp/.gitkeep
+tmp/
 nohup.out
 
 env/
