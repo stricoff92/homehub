@@ -9,10 +9,12 @@ from django.conf import settings
 import requests
 
 from api.models import WeatherSource
-from api.lib import tmp_lib, script_logger
+from api.lib import tmp_lib, script_logger, environment
 
 API_BASE_URL = "https://api.openweathermap.org/data/2.5/onecall"
 CACHE_FILE_NAME = "weather.json"
+if environment.is_testing():
+    CACHE_FILE_NAME = 'test-' + CACHE_FILE_NAME
 
 
 class NoActiveWeatherSourcesError(Exception):

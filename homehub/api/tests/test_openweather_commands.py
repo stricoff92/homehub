@@ -1,8 +1,8 @@
 
 import os.path
-from django.test import TestCase
 from unittest.mock import patch
 
+from django.test import TestCase
 from django.core.management import call_command
 from django.conf import settings
 from rest_framework import status

@@ -1,7 +1,7 @@
 
 import os.path
-from django.test import TestCase
 
+from django.test import TestCase
 from django.core.management import call_command
 
 from api.lib import hubstate
