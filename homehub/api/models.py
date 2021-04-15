@@ -5,6 +5,11 @@ class NewsSource(models.Model):
     is_active = models.BooleanField(default=True)
     source_url = models.CharField(max_length=200)
 
+    name = models.CharField(max_length=30)
+
+    def __str__(self) -> str:
+        return f"<NS{self.pk} {self.name}>"
+
 
 class WeatherSource(models.Model):
     is_active = models.BooleanField(default=True)
