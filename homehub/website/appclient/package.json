@@ -8,7 +8,8 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "builddev": "ng build --watch --output-hashing all --base-href /static/"
+    "builddev": "ng build --watch --output-hashing all --base-href /static/",
+    "buildprod": "ng build --prod --output-hashing all --base-href /static/"
   },
   "private": true,
   "dependencies": {
