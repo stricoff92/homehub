@@ -8,4 +8,5 @@ testdb.sqlite3
 *.log
 nohup.out
 
+env/
 __pycache__/
