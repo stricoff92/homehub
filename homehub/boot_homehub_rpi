@@ -38,6 +38,8 @@ git pull
 # Update Dependancies
 ../env/bin/pip install -r ../requirements.txt
 
+# Build Angular Assets
+
 # Start gunicorn server
 
 # Open Google Chrome
