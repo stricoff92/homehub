@@ -15,13 +15,15 @@ PASSWORD_HASHERS = [
     'django.contrib.auth.hashers.MD5PasswordHasher',
 ]
 
-# File Based DB for Faster setup and teardown
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'testdb.sqlite3'),
+        'NAME': BASE_DIR / 'testdb.sqlite3',
     }
 }
+
+
 
 # Disable cache based rate throttling
 CACHES = {
@@ -31,3 +33,6 @@ CACHES = {
 }
 
 EMAIL_BACKEND = 'django.core.mail.backends.dummy.EmailBackend'
+
+WEATHER_API_KEY = "supersecret"
+

@@ -8,6 +8,8 @@ from django.conf import settings
 from api.lib import environment
 
 
+FILE_MODE_APPEND = "a"
+
 def create_logger(name:str, level=logging.DEBUG, formatting="%(asctime)s - %(levelname)s - %(message)s"):
     logger = logging.getLogger(name)
     logger.setLevel(level)
@@ -16,7 +18,7 @@ def create_logger(name:str, level=logging.DEBUG, formatting="%(asctime)s - %(lev
     else:
         file_name = f"{name}-{timezone.now().strftime('%Y-%m-%d%_H%M%S')}.log"
         file_path = os.path.join(settings.BASE_DIR, 'logs', file_name)
-        handler = logging.FileHandler(file_path)
+        handler = logging.FileHandler(file_path, mode=FILE_MODE_APPEND)
         handler.setFormatter(logging.Formatter(formatting))
     logger.addHandler(handler)
     return logger
