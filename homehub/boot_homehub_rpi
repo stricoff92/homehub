@@ -1,0 +1,44 @@
+#!/bin/bash
+
+# Reboot webserver and chrome instance for a Raspberry Pi.
+
+# Starting message.
+echo "$(date): Booting homehub for Raspberry Pi"
+
+# Crash on any errors
+set -e
+
+# Change to correct directory
+SCRIPT_PATH="`dirname \"$0\"`"
+echo "$(date): changing to directory: $SCRIPT_PATH"
+cd "$SCRIPT_PATH"
+
+# Wait for network connection
+tryct=0
+maxtryct=100
+while ! ifconfig | grep "192.168." > /dev/null; do
+    tryct=$((tryct+1))
+    if ((tryct > maxtryct)); then
+        echo "$(date): giving up"
+        exit 1
+    fi
+    echo "$(date): Waiting for network connection (Attempt $tryct out of $maxtryct)..."
+    sleep 3
+done
+
+# Push notification if IPv4 has updated
+../env/bin/python manage.py send_ip_update_alert
+
+# Pull Source Code
+git pull
+
+# Update Dependancies
+../env/bin/pip install -r ../requirements.txt
+
+# Start gunicorn server
+
+# Open Google Chrome
+nohup google-chrome http://localhost:8000 --start-fullscreen > /dev/null & disown
+
+# Ending message.
+echo "$(date): Boot Sequence Complete"
