@@ -1,0 +1,19 @@
+
+div {
+    color:#ffffff;
+}
+
+#time-widget {
+    font-weight: bold;
+    font-size:7rem;
+}
+
+#day-of-week-widget {
+    font-weight: bold;
+    font-size:4.5rem;
+}
+
+#date-widget {
+    font-weight: bold;
+    font-size:3rem;
+}

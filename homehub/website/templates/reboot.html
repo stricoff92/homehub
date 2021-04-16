@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <style>
+            body {
+                font-family: Arial;
+                margin:20px;
+            }
+            #reboot-btn {
+                font-size:1.5rem;
+                background-color: #9b0000;
+                color:#ffffff;
+                font-weight:bold;
+            }
+        </style>
+    </head>
+    <body>
+        {% if rebooting %}
+            <h1>System is Rebooting...</h1>
+        {% else %}
+            <h1>Reboot the System</h1>
+            <form method="POST", action="{% url 'app-reboot' %}">
+                {% csrf_token %}
+                <input id="reboot-btn" type="submit" value="Reboot">
+            </form>
+        {% endif %}
+    </body>
+</html>
