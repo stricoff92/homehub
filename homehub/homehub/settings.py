@@ -29,6 +29,14 @@ SECRET_KEY = applocals.SECRET_KEY
 DEBUG = applocals.DEBUG
 ENV = applocals.ENV
 
+
+ENV_DEV = 'DEV'
+ENV_TESTING = 'TESTING'
+ENV_PROD = 'PROD'
+if ENV not in [ENV_DEV, ENV_TESTING, ENV_PROD]:
+    raise Exception("Invalid ENV")
+
+
 ALLOWED_HOSTS = applocals.ALLOWED_HOSTS
 
 APP_PORT = applocals.APP_PORT
