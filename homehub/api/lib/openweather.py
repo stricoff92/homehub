@@ -38,7 +38,10 @@ def fetch_json() -> Dict:
 
     response = requests.get(API_BASE_URL, params=data)
     response.raise_for_status()
-    return response.json()
+    return {
+        **response.json(),
+        **{'weather_location_name':weather_source.name},
+    }
 
 
 def hash_weather_dict(data:Dict) -> str:

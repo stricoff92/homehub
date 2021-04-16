@@ -1,0 +1,43 @@
+
+<div class="row">
+    <div class="col-6">
+        <div class="location-name">
+            {{ weatherLocationName }}
+        </div>
+        <div class="current-temperature">
+            {{ currentTemperature }}°c
+        </div>
+    </div>
+    <div class="col-6" style="display:flex; flex-direction:column; justify-content:space-evenly;">
+        <div *ngFor="let wd of weatherDescriptions" class="weather-description">
+            {{ wd }}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-12 pl-5 pr-5">
+        <div class="weather-property-row weather-property-top-row">
+            <div>High/Low</div>
+            <div>{{ tempHigh }}°c / {{ tempLow }}°c</div>
+        </div>
+        <div class="weather-property-row weather-property-top-row">
+            <div>Wind</div>
+            <div>{{ currentWindSpeed }} mph</div>
+        </div>
+        <div class="weather-property-row">
+            <div>Humidity</div>
+            <div>{{ currentHumidity }} %</div>
+        </div>
+        <div class="weather-property-row">
+            <div>Sunrise</div>
+            <div>{{ sunriseAt }}</div>
+        </div>
+        <div class="weather-property-row">
+            <div>Sunset</div>
+            <div>{{ sunsetAt }}</div>
+        </div>
+    </div>
+</div>
+<div class="m-3" style="text-align:right; font-size:1.25rem;">
+    <em>Last Updated {{ lastUpdated }}</em>
+</div>
