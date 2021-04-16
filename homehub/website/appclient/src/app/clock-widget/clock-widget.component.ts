@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import * as moment from 'moment';
 
+
 @Component({
   selector: 'app-clock-widget',
   templateUrl: './clock-widget.component.html',
