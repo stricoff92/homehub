@@ -41,6 +41,10 @@ ALLOWED_HOSTS = applocals.ALLOWED_HOSTS
 
 APP_PORT = applocals.APP_PORT
 
+# This is not suitable for a remote host.
+SESSION_COOKIE_SECURE = False
+CSRF_COOKIE_SECURE = False
+
 
 # Application definition
 
@@ -103,18 +107,18 @@ DATABASES = {
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
-    {
-        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
-    },
+    # {
+    #     'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
+    # },
+    # {
+    #     'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+    # },
+    # {
+    #     'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
+    # },
+    # {
+    #     'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
+    # },
 ]
 
 
@@ -141,6 +145,8 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "website/templates/angular_static"),
 ]
+
+LOGIN_URL = "/admin/login/"
 
 
 # Default primary key field type
