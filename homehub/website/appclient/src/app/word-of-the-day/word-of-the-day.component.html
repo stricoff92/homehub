@@ -1,0 +1,12 @@
+
+<div>
+    <div class="word-of-the-day m-3">
+        <em>{{ wordOfTheDay }}</em>
+    </div>
+    <div *ngFor="let d of definitions" class="ml-3 mt-2 definition-line">
+        {{ d }}
+    </div>
+    <div class="definition-note ml-3 mt-4">
+        <strong><em>Note:</em></strong> {{ note }}
+    </div>
+</div>

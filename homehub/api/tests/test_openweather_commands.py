@@ -19,7 +19,7 @@ class HubStateTestCases(TestCase):
         self.hs = hubstate.HubState()
 
         self.weather_source = WeatherSource.objects.create(
-            longitude="50.0000", latitude="75.0000", is_active=True)
+            longitude="50.0000", latitude="75.0000", is_active=True, name="foobar")
         self.assertEqual(WeatherSource.objects.count(), 1)
 
 
@@ -62,5 +62,5 @@ class HubStateTestCases(TestCase):
         data_in_cache = openweather.read_cache()
         self.assertEqual(
             data_in_cache,
-            {'hello': 'world!', 'hash': '54fdb32186acee26c7ccac539fdafce2'}
+            {'hello': 'world!', 'hash': '3f87dedbef528f7dfb7243c6db0917c3', 'weather_location_name': 'foobar'}
         )

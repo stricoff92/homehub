@@ -7,12 +7,16 @@ import { HttpClientModule, HttpClientXsrfModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { ClockWidgetComponent } from './clock-widget/clock-widget.component';
 import { CurrentWeatherComponent } from './current-weather/current-weather.component';
+import { UpcomingWeatherComponent } from './upcoming-weather/upcoming-weather.component';
+import { WordOfTheDayComponent } from './word-of-the-day/word-of-the-day.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ClockWidgetComponent,
-    CurrentWeatherComponent
+    CurrentWeatherComponent,
+    UpcomingWeatherComponent,
+    WordOfTheDayComponent
   ],
   imports: [
     BrowserModule,

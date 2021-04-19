@@ -12,9 +12,9 @@ import { ApiService } from './api.service';
 export class WeatherService {
 
   private weatherUrl = "/api/v1/weather"
-  private refreshIntervalMilliSeconds = 60 * 2 * 1000
+  private refreshIntervalMilliSeconds = 1000 * 60 * 2 // 2 Minutes
   private weatherDataHash:string
-  private autoRefresh = false
+  private autoRefresh = true
 
   newWeatherData = new Subject<any>()
   weatherData:any
@@ -69,6 +69,18 @@ export class WeatherService {
 
     this.newWeatherData.next(this.weatherData)
 
+  }
+
+  kelvinToRoundedCelcius(kelvin:number):number {
+    return Math.round(kelvin - 273.15)
+  }
+
+  titleCase(str:string):string {
+    let strParts = str.toLowerCase().split(' ');
+    for (var i = 0; i < strParts.length; i++) {
+      strParts[i] = strParts[i].charAt(0).toUpperCase() + strParts[i].slice(1);
+    }
+    return strParts.join(' ')
   }
 
 
