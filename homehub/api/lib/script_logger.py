@@ -13,10 +13,11 @@ FILE_MODE_APPEND = "a"
 def create_logger(name:str, level=logging.DEBUG, formatting="%(asctime)s - %(levelname)s - %(message)s"):
     logger = logging.getLogger(name)
     logger.setLevel(level)
+    logger.handlers = []
     if environment.is_testing():
         handler = logging.NullHandler()
     else:
-        file_name = f"{name}-{timezone.now().strftime('%Y-%m-%d%_H%M%S')}.log"
+        file_name = f"{name}-{timezone.now().strftime('%Y-%m-%d')}.log"
         file_path = os.path.join(settings.BASE_DIR, 'logs', file_name)
         handler = logging.FileHandler(file_path, mode=FILE_MODE_APPEND)
         handler.setFormatter(logging.Formatter(formatting))

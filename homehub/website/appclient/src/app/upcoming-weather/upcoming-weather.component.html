@@ -1,0 +1,24 @@
+
+<div style="display:flex; justify-content:space-around;">
+    <div *ngFor="let uw of upcomingWeather">
+        <div style="font-size: 3rem;">
+            {{ uw.dt }}
+        </div>
+        <div style="display:flex;justify-content:space-between;">
+            <div class="mr-3" style="font-size:2rem;">
+                {{ uw.temp }}°c
+            </div>
+            <div>
+                <div style="font-size:1.5rem;">
+                    <strong>Wind:</strong> {{ uw.windSpeed }} mph
+                </div>
+                <div class="mb-3" style="font-size:1.5rem;">
+                    <strong>Humidity:</strong> {{ uw.humidity }} %
+                </div>
+            </div>
+        </div>
+        <div *ngFor="let wd of uw.weatherDescriptions" style="font-size:1.5rem;">
+            <em>{{ wd }}</em>
+        </div>
+    </div>
+</div>
