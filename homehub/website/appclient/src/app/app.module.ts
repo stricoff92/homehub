@@ -11,6 +11,7 @@ import { UpcomingWeatherComponent } from './upcoming-weather/upcoming-weather.co
 import { WordOfTheDayComponent } from './word-of-the-day/word-of-the-day.component';
 import { BikeStationsComponent } from './bike-stations/bike-stations.component';
 import { VulnerabilitiesComponent } from './vulnerabilities/vulnerabilities.component';
+import { HolidaysComponent } from './holidays/holidays.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { VulnerabilitiesComponent } from './vulnerabilities/vulnerabilities.comp
     UpcomingWeatherComponent,
     WordOfTheDayComponent,
     BikeStationsComponent,
-    VulnerabilitiesComponent
+    VulnerabilitiesComponent,
+    HolidaysComponent
   ],
   imports: [
     BrowserModule,

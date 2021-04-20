@@ -7,7 +7,7 @@ from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 
-from api.lib import openweather, wordnik, bikes, vulnerability
+from api.lib import openweather, wordnik, bikes, vulnerability, calendarific
 
 
 @api_view(['GET'])
@@ -61,3 +61,14 @@ def get_vulnerability(request):
         'description':v.description,
     }
     return Response(data, status.HTTP_200_OK)
+
+
+@api_view(['GET'])
+@permission_classes([])
+def get_next_holidays(request):
+    try:
+        holidays = list(calendarific.read_upcoming_holidays(4))
+    except calendarific.HolidayCacheIsEmptyError:
+        return Response("No holiday data found", status.HTTP_404_NOT_FOUND)
+
+    return Response(holidays, status.HTTP_200_OK)
