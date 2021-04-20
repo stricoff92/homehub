@@ -12,7 +12,7 @@ class Command(BaseCommand):
         logger = script_logger.get_hub_logger()
         hs = hubstate.HubState()
         if not hs.getkey(hs.STATE_KEY_IS_ONLINE):
-            logger.debug("skipping weather update")
+            logger.debug("skipping bikes update")
             return
 
         bikes.update_cache()
