@@ -32,6 +32,7 @@ export class WotdService {
     const response = await this._api.get(this.wotdAPIUrl)
     this.wordOfTheDay = response.word
     this.note = response.note
+    this.definitions = []
     for (let i in response.definitions){
       let d = response.definitions[i]
       this.definitions.push(`(${this.abbreviatePartOfSpeech(d.partOfSpeech)}) ${d.text}`)
