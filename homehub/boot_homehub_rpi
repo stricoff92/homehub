@@ -46,10 +46,10 @@ cd ..
 cd ..
 
 # Start gunicorn server
-nohup gunicorn --bind 127.0.0.1:8000 --workers 1 homehub.wsgi & disown
+nohup gunicorn --bind 0.0.0.0:8000 --workers 1 homehub.wsgi & disown
 
 # Open Google Chrome
-nohup google-chrome http://localhost:8000 --start-fullscreen > /dev/null & disown
+nohup DISPLAY=:0 chromium-browser http://localhost:8000 --start-fullscreen > /dev/null & disown
 
 # Ending message.
 echo "$(date): Boot Sequence Complete"
