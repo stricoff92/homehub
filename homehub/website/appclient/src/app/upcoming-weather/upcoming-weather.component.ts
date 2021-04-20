@@ -11,15 +11,20 @@ import * as moment from 'moment';
 export class UpcomingWeatherComponent implements OnInit {
 
   upcomingWeather = []
+  newWeatherSubscription:any
 
   constructor(
     private _weather:WeatherService
   ) { }
 
   ngOnInit() {
-    this._weather.newWeatherData.subscribe(data => {
+    this.newWeatherSubscription = this._weather.newWeatherData.subscribe(data => {
       this.upcomingWeather = this.getUpcomingGroupedWeather(data, 6, 4)
     })
+  }
+
+  ngOnDestroy() {
+    this.newWeatherSubscription.unsubscribe()
   }
 
   getUpcomingGroupedWeather(data, hoursToBlock, hoursToShow):any[] {

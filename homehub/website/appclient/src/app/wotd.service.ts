@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ApiService } from './api.service';
+import * as moment from 'moment'
 
 @Injectable({
   providedIn: 'root'
@@ -11,6 +12,7 @@ export class WotdService {
   wordOfTheDay:string
   note:string
   definitions:string[] = []
+  lastFetch:moment.Moment
 
   constructor(
     private _api:ApiService
@@ -29,13 +31,16 @@ export class WotdService {
   }
 
   async fetchWOTD():Promise<void> {
-    const response = await this._api.get(this.wotdAPIUrl)
-    this.wordOfTheDay = response.word
-    this.note = response.note
-    this.definitions = []
-    for (let i in response.definitions){
-      let d = response.definitions[i]
-      this.definitions.push(`(${this.abbreviatePartOfSpeech(d.partOfSpeech)}) ${d.text}`)
+    if (!this.lastFetch || moment(this.lastFetch).add(2, 'hours') < moment()) {
+      const response = await this._api.get(this.wotdAPIUrl)
+      this.lastFetch = moment()
+      this.wordOfTheDay = response.word
+      this.note = response.note
+      this.definitions = []
+      for (let i in response.definitions){
+        let d = response.definitions[i]
+        this.definitions.push(`(${this.abbreviatePartOfSpeech(d.partOfSpeech)}) ${d.text}`)
+      }
     }
   }
 
