@@ -1,0 +1,13 @@
+
+div {
+    color:#ffffff;
+}
+
+.item-label {
+    font-size: 1.75rem;
+    font-weight: bold;
+}
+
+.item-count {
+    font-size: 3.5rem;
+}

@@ -6,7 +6,7 @@ from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 
-from api.lib import openweather, wordnik
+from api.lib import openweather, wordnik, bikes
 
 
 @api_view(['GET'])
@@ -29,3 +29,15 @@ def get_wotd(request):
         return Response("No word of the day found", status.HTTP_404_NOT_FOUND)
 
     return Response(weather_data, status.HTTP_200_OK)
+
+
+@api_view(['GET'])
+@permission_classes([])
+def get_bikes(request):
+    try:
+        bikes_data = bikes.read_cache()
+    except bikes.BikesCacheIsEmptyError:
+        return Response("No bike data found", status.HTTP_404_NOT_FOUND)
+
+    return Response(bikes_data, status.HTTP_200_OK)
+
