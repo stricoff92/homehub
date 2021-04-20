@@ -22,7 +22,6 @@ export class WeatherService {
   constructor(
     private _api:ApiService
   ) {
-    // console.log("WeatherSerivce constuctor()")
     this.refreshData()
   }
 
@@ -56,7 +55,6 @@ export class WeatherService {
     }
 
     if (this.weatherDataHash == response.hash) {
-      console.log('weather data hashes match, no updates')
       return
     }
 

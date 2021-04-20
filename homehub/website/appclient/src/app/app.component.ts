@@ -12,8 +12,8 @@ export class AppComponent {
   showBikes = true
   row1CycleInteraval = 1000 * 20
 
-  showVulnerabilities = true
-  showHolidatCalendar = false
+  showVulnerabilities = false
+  showHolidatCalendar = true
   row2CycleInteraval = 1000 * 35
 
   constructor() {
@@ -22,6 +22,7 @@ export class AppComponent {
 
   ngOnInit(){
     setTimeout(this.cycleRow1.bind(this), this.row1CycleInteraval)
+    setTimeout(this.cycleRow2.bind(this), this.row2CycleInteraval)
   }
 
   async cycleRow1() {
@@ -31,8 +32,8 @@ export class AppComponent {
   }
 
   async cycleRow2() {
-    // this.showVulnerabilities = !this.showVulnerabilities
-    // this.showHolidatCalendar = !this.showHolidatCalendar
+    this.showVulnerabilities = !this.showVulnerabilities
+    this.showHolidatCalendar = !this.showHolidatCalendar
     setTimeout(this.cycleRow2.bind(this), this.row2CycleInteraval)
   }
 

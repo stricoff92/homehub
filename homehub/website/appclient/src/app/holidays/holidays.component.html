@@ -1,0 +1,20 @@
+
+<div>
+    <div style="font-size:3rem; text-align:center;">
+        Holidays
+    </div>
+    <div style="display:flex; justify-content:space-around;" class="mt-3">
+        <div *ngFor="let h of holidayData">
+            <div style="font-size:2rem;">
+                {{ h.dateStr }}
+            </div>
+            <div style="font-size:1.5rem;">
+                <em>{{ h.name }}</em>
+            </div>
+            <div *ngFor="let t of h.type" style="font-size:1.25rem;">
+                {{ t }}
+            </div>
+        </div>
+    </div>
+</div>
+

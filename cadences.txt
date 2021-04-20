@@ -1,0 +1,30 @@
+
+Bike AJAX polling:
+every 30 seconds
+
+Bike Cache Refresh (only if online)
+Every 5 mins
+
+Weather AJAX polling
+Every 2 minutes
+
+Weather Cache Refresh (only if online)
+Every 5 Minutes
+
+Word Of the Day AJAX polling
+(Every 2 hours)
+
+Word of the day Cache Refresh
+Daily
+
+Vulnerabilities AJAX Polling
+Every 8 minutes
+
+Wulnerabilities cache Refresh
+Daily
+
+Holidays AJAX poling
+Every 20 mins
+
+Holidays Cache Refresh
+daily

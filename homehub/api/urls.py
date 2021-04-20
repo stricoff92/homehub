@@ -9,4 +9,5 @@ urlpatterns = [
     path("wotd", views.get_wotd, name="api-get-wotd"),
     path("bikes", views.get_bikes, name="api-get-bikes"),
     path("vulnerability", views.get_vulnerability, name="api-get-vulnerability"),
+    path("holidays", views.get_next_holidays, name="api-get-holidays"),
 ]
