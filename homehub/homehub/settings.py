@@ -146,6 +146,10 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "website/templates/angular_static"),
 ]
 
+# For collect static
+STATIC_ROOT = os.path.join(BASE_DIR, 'website/templates/static')
+
+
 LOGIN_URL = "/admin/login/"
 
 
