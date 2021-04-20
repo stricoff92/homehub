@@ -38,12 +38,12 @@ git pull
 # Update Dependancies
 ../env/bin/pip install -r ../requirements.txt
 
-# Build Angular Assets
-cd website/appclient
-# npm install
-npm run-script buildprod
-cd ..
-cd ..
+# # Build Angular Assets
+# cd website/appclient
+# # npm install
+# npm run-script buildprod
+# cd ..
+# cd ..
 
 # Start gunicorn server
 source ../env/bin/activate && nohup gunicorn --bind 0.0.0.0:8000 --workers 1 homehub.wsgi & disown
