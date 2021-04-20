@@ -13,7 +13,8 @@ export class AppComponent {
   row1CycleInteraval = 1000 * 20
 
   showVulnerabilities = true
-  row2CycleInteraval = 1000 * 20
+  showHolidatCalendar = false
+  row2CycleInteraval = 1000 * 35
 
   constructor() {
 
@@ -27,6 +28,12 @@ export class AppComponent {
     this.showWOTD = !this.showWOTD
     this.showBikes = !this.showBikes
     setTimeout(this.cycleRow1.bind(this), this.row1CycleInteraval)
+  }
+
+  async cycleRow2() {
+    // this.showVulnerabilities = !this.showVulnerabilities
+    // this.showHolidatCalendar = !this.showHolidatCalendar
+    setTimeout(this.cycleRow2.bind(this), this.row2CycleInteraval)
   }
 
 }
