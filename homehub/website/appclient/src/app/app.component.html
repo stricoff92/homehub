@@ -18,8 +18,10 @@
   </div>
   <div class="row h-25 row-section">
     <div class="col-12 row-section">
-      <app-word-of-the-day>
+      <app-word-of-the-day *ngIf="showWOTD">
       </app-word-of-the-day>
+      <app-bike-stations *ngIf="showBikes">
+      </app-bike-stations>
     </div>
   </div>
   <div class="row h-25 row-section">

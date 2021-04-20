@@ -1,0 +1,31 @@
+
+<div style="display:flex; justify-content:space-around;">
+    <div *ngFor="let s of bikeStations">
+        <div style="font-weight:bold; font-size:2rem;">
+            {{ s.name }}
+        </div>
+        <div style="display:flex; justify-content:space-between;">
+            <div>
+                <div class="item-count">
+                    {{ s.free_bikes }}
+                </div>
+                <div class="item-label">
+                    Bikes
+                </div>
+            </div>
+            <div>
+                <div class="item-count">
+                    {{ s.empty_slots }}
+                </div>
+                <div class="item-label">
+                    Docks
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="mt-3" style="display:flex; justify-content:flex-end; font-size:1.25rem;">
+    <div>
+        <em>Last Update {{ updatedAt }}</em>
+    </div>
+</div>

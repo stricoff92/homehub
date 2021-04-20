@@ -19,7 +19,6 @@ export class UpcomingWeatherComponent implements OnInit {
   ngOnInit() {
     this._weather.newWeatherData.subscribe(data => {
       this.upcomingWeather = this.getUpcomingGroupedWeather(data, 6, 4)
-      console.log(this.upcomingWeather)
     })
   }
 
