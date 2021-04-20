@@ -53,7 +53,8 @@ def get_vulnerability(request):
         return Response("No Vulneravility data found", status.HTTP_404_NOT_FOUND)
 
     v.displayed_at = timezone.now()
-    v.save(update_fields=["displayed_at"])
+    v.displayed_once = True
+    v.save(update_fields=["displayed_at", "displayed_once"])
 
     data = {
         'cve_identifier':v.cve_identifier,

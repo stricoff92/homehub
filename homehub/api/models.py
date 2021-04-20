@@ -37,9 +37,10 @@ class BikeStation(models.Model):
 
 class Vulnerability(models.Model):
     displayed_at = models.DateTimeField(blank=True, null=True, default=None)
+    displayed_once = models.BooleanField(default=False)
 
     cve_identifier = models.CharField(max_length=25)
     description = models.TextField()
 
     def __str__(self) -> str:
-        return f"<V{self.pk} {self.cve_identifier} ({self.description[:20]}...)>"
+        return f"<V{self.pk} {self.cve_identifier}{' (VIEWED)' if self.displayed_at else ''} ({self.description[:20]}...)>"
