@@ -10,6 +10,7 @@ import { CurrentWeatherComponent } from './current-weather/current-weather.compo
 import { UpcomingWeatherComponent } from './upcoming-weather/upcoming-weather.component';
 import { WordOfTheDayComponent } from './word-of-the-day/word-of-the-day.component';
 import { BikeStationsComponent } from './bike-stations/bike-stations.component';
+import { VulnerabilitiesComponent } from './vulnerabilities/vulnerabilities.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { BikeStationsComponent } from './bike-stations/bike-stations.component';
     CurrentWeatherComponent,
     UpcomingWeatherComponent,
     WordOfTheDayComponent,
-    BikeStationsComponent
+    BikeStationsComponent,
+    VulnerabilitiesComponent
   ],
   imports: [
     BrowserModule,

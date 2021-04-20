@@ -1,12 +1,13 @@
 
 import json
 
+from django.utils import timezone
 from rest_framework import status
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 
-from api.lib import openweather, wordnik, bikes
+from api.lib import openweather, wordnik, bikes, vulnerability
 
 
 @api_view(['GET'])
@@ -41,3 +42,21 @@ def get_bikes(request):
 
     return Response(bikes_data, status.HTTP_200_OK)
 
+
+
+@api_view(['GET'])
+@permission_classes([])
+def get_vulnerability(request):
+    try:
+        v = vulnerability.select_random_vulnerability_item()
+    except vulnerability.NoVulnernabilitiesError:
+        return Response("No Vulneravility data found", status.HTTP_404_NOT_FOUND)
+
+    v.displayed_at = timezone.now()
+    v.save(update_fields=["displayed_at"])
+
+    data = {
+        'cve_identifier':v.cve_identifier,
+        'description':v.description,
+    }
+    return Response(data, status.HTTP_200_OK)
