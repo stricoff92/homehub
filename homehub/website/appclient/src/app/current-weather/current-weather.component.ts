@@ -21,13 +21,15 @@ export class CurrentWeatherComponent implements OnInit {
 
   weatherDescriptions:string[] = []
 
+  newWeatherSubscription:any
+
   constructor(
     private _weather:WeatherService
   ) { }
 
 
   ngOnInit() {
-    this._weather.newWeatherData.subscribe(data => {
+    this.newWeatherSubscription = this._weather.newWeatherData.subscribe(data => {
 
       this.weatherLocationName = data.weather_location_name
       this.currentTemperature = this._weather.kelvinToRoundedCelcius(data.current.temp)
@@ -42,6 +44,10 @@ export class CurrentWeatherComponent implements OnInit {
       this.sunsetAt = data.current.sunset.format("HH:mm")
       this.lastUpdated = data.current.dt.format("HH:mm")
     })
+  }
+
+  ngOnDestroy() {
+    this.newWeatherSubscription.unsubscribe()
   }
 
 }

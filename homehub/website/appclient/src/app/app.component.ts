@@ -12,6 +12,9 @@ export class AppComponent {
   showBikes = true
   row1CycleInteraval = 1000 * 20
 
+  showVulnerabilities = true
+  row2CycleInteraval = 1000 * 20
+
   constructor() {
 
   }

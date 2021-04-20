@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ApiService } from '../api.service';
 
 import * as moment from "moment";
+import { BikesService } from '../bikes.service';
 
 @Component({
   selector: 'app-bike-stations',
@@ -14,22 +14,27 @@ export class BikeStationsComponent implements OnInit {
 
   bikeStations:any[] = []
   updatedAt:string
-  refreshInterval = 1000 * 10
+
+  newBikeSubscription:any
+
 
   constructor(
-    private _api:ApiService
+    private _bikes:BikesService
   ) { }
 
   ngOnInit() {
-    this.refreshBikesData()
+    this.bikeStations = this._bikes.bikeStations
+    this.updatedAt = this._bikes.updatedAt
+
+    this.newBikeSubscription = this._bikes.newBikeData.subscribe(data=>{
+      this.bikeStations = data.data
+      this.updatedAt = moment(data.updated_at).format("HH:mm")
+    })
+
   }
 
-  private async refreshBikesData() {
-    const data = await this._api.get(this.bikesAPIUrl)
-    this.bikeStations = data.data
-    this.updatedAt = moment(data.updated_at).format("HH:mm")
-
-    setTimeout(this.refreshBikesData.bind(this), this.refreshInterval)
+  ngOnDestroy() {
+    this.newBikeSubscription.unsubscribe()
   }
 
 }
