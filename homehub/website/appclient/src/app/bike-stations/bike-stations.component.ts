@@ -14,7 +14,7 @@ export class BikeStationsComponent implements OnInit {
 
   bikeStations:any[] = []
   updatedAt:string
-  refreshInterval = 1000 * 60 * 1
+  refreshInterval = 1000 * 10
 
   constructor(
     private _api:ApiService
