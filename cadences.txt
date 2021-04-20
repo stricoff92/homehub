@@ -6,7 +6,7 @@ Bike Cache Refresh (only if online)
 Every 5 mins
 
 Weather AJAX polling
-Every 2 minutes
+Every 30 seconds
 
 Weather Cache Refresh (only if online)
 Every 2 Minutes

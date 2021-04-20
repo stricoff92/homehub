@@ -12,7 +12,7 @@ import { ApiService } from './api.service';
 export class WeatherService {
 
   private weatherUrl = "/api/v1/weather"
-  private refreshIntervalMilliSeconds = 1000 * 60 * 2 // 2 Minutes
+  private refreshIntervalMilliSeconds = 1000 * 30 // 30 Seconds
   private weatherDataHash:string
   private autoRefresh = true
 
