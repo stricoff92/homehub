@@ -9,7 +9,7 @@ Weather AJAX polling
 Every 2 minutes
 
 Weather Cache Refresh (only if online)
-Every 5 Minutes
+Every 2 Minutes
 
 Word Of the Day AJAX polling
 (Every 2 hours)
