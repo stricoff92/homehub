@@ -34,7 +34,8 @@ export class AppComponent {
   async cycleRow2() {
     this.showVulnerabilities = !this.showVulnerabilities
     this.showHolidatCalendar = !this.showHolidatCalendar
-    setTimeout(this.cycleRow2.bind(this), this.row2CycleInteraval)
+    const timeMultiplier = this.showVulnerabilities ? 3 : 1
+    setTimeout(this.cycleRow2.bind(this), this.row2CycleInteraval * timeMultiplier)
   }
 
 }
