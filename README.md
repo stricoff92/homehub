@@ -66,10 +66,13 @@ $ virtuelenv env
 $ source env/bin/activate
 $ pip install -r requirements.txt
 ```
-3. Install Node dependancies
+3. Install Node dependancies, build the angular app
 ```
 $ cd homehub/website/appclient
 $ npm install
+$ npm run-script buildprod
+$ cd ..; cd ..
+$ ./manage.py collectstatic
 ```
 4. Create `applocals.py` file in `homehub/homehub/homehub/`
 ```python
