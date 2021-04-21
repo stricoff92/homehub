@@ -9,9 +9,6 @@ echo "$(date): Booting homehub for Raspberry Pi"
 kill $(ps -e | grep gunicorn | awk '{print $1}')
 
 
-# Crash on any errors
-set -e
-
 # Change to correct directory
 SCRIPT_PATH="`dirname \"$0\"`"
 echo "$(date): changing to directory: $SCRIPT_PATH"
@@ -20,7 +17,13 @@ cd "$SCRIPT_PATH"
 # Wait for network connection
 tryct=0
 maxtryct=100
-while ! ifconfig | grep "192.168." > /dev/null; do
+while true; do
+    python3.6 /home/pi/check_connection.py
+    if [ $? -eq 0 ]; then
+    echo "found network connection"
+        break
+    fi
+
     tryct=$((tryct+1))
     if ((tryct > maxtryct)); then
         echo "$(date): giving up"
@@ -29,6 +32,10 @@ while ! ifconfig | grep "192.168." > /dev/null; do
     echo "$(date): Waiting for network connection (Attempt $tryct out of $maxtryct)..."
     sleep 3
 done
+
+
+# Crash on any errors
+set -e
 
 # Push notification if IPv4 has updated
 ../env/bin/python manage.py send_ip_update_alert
