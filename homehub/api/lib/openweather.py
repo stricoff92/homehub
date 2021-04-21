@@ -48,8 +48,8 @@ def hash_weather_dict(data:Dict) -> str:
     return hashlib.md5(json.dumps(data).encode()).hexdigest()
 
 
-def update_cache() -> None:
-    logger = script_logger.get_hub_logger()
+def update_cache(logger=None) -> None:
+    logger = logger or script_logger.create_logger("weather")
     logger.info(f"(updating cache) -> Fetching data from {API_BASE_URL}")
     try:
         data = fetch_json()

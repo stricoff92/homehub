@@ -31,12 +31,17 @@ def fetch_json(year:int):
     return response.json()
 
 
-def update_cache(year=None) -> None:
-    logger = script_logger.get_hub_logger()
+def update_cache(year=None, logger=None) -> None:
+    logger = logger or script_logger.create_logger("holidays")
     year = year or dt.datetime.now().year
     logger.info(f"(updating cache) -> Fetching holiday data for year {year}")
 
-    data = fetch_json(year)['response']['holidays']
+    try:
+        data = fetch_json(year)['response']['holidays']
+    except Exception as e:
+        logger.error(f"could not fetch data {e}")
+        raise
+
     logger.info(f"(updating cache) -> Fetched {len(data)} holidays")
 
     file_path = tmp_lib.generate_named_tmp_file(CACHE_FILE_NAME)

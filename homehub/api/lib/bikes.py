@@ -32,20 +32,26 @@ def fetch_json(network:str, stations:Set[str]) -> Generator:
             yield station
 
 
-def update_cache() -> None:
-    logger = script_logger.get_hub_logger()
+def update_cache(logger=None) -> None:
+    logger = logger or script_logger.create_logger("bikes")
     logger.info(f"(updating cache) -> Fetching data from http://api.citybik.es/v2/networks/")
 
     stations = BikeStation.objects.filter(is_active=True)
     target_network = stations.first().network
     target_stations = set(stations.values_list("station_id", flat=True))
 
-    stations_data = list(fetch_json(target_network, target_stations))
+    try:
+        stations_data = list(fetch_json(target_network, target_stations))
+    except Exception as e:
+        logger.error(f"could not fetch data {e}")
+        raise
+
     logger.info(f"data fetched for {len(stations_data)} stations")
 
     station_name_map = dict(stations.values_list('station_id', 'name'))
     for ix, station in enumerate(stations_data):
         stations_data[ix]['name'] = station_name_map[station['id']]
+        logger.debug(f"found data for station {station_name_map[station['id']]}")
 
     data_to_cache = {
         'data':stations_data,
@@ -53,6 +59,7 @@ def update_cache() -> None:
     }
 
     file_name = tmp_lib.generate_named_tmp_file(CACHE_FILE_NAME)
+    logger.info(f"updating tmp file {file_name}")
     with open(file_name, "w") as f:
         json.dump(data_to_cache, f)
 

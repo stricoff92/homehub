@@ -32,14 +32,16 @@ def fetch_json() -> Dict:
     return response.json()
 
 
-def update_cache() -> None:
-    logger = script_logger.get_hub_logger()
+def update_cache(logger=None) -> None:
+    logger = logger or script_logger.create_logger("wotd")
     logger.info(f"(updating cache) -> Fetching data from {WORD_OF_THE_DAY_API_URL}")
     try:
         data = fetch_json()
     except Exception as e:
         logger.error(f"Failed to fetch data: {e}")
         raise
+
+    logger.info(f'downloaded data {data}')
 
     file_path = tmp_lib.generate_named_tmp_file(CACHE_FILE_NAME)
     with open(file_path, "w") as f:
