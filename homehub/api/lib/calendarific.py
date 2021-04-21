@@ -42,6 +42,9 @@ def update_cache(year=None, logger=None) -> None:
         logger.error(f"could not fetch data {e}")
         raise
 
+    data.sort(
+        key=lambda h: dt.datetime.strptime(h['date']['iso'].split('T')[0], '%Y-%m-%d').date())
+
     logger.info(f"(updating cache) -> Fetched {len(data)} holidays")
 
     file_path = tmp_lib.generate_named_tmp_file(CACHE_FILE_NAME)
