@@ -5,6 +5,10 @@
 # Starting message.
 echo "$(date): Booting homehub for Raspberry Pi"
 
+# Kill any gunicorn processes running
+kill $(ps -e | grep gunicorn | awk '{print $1}')
+
+
 # Crash on any errors
 set -e
 
@@ -33,7 +37,6 @@ done
 ../env/bin/python manage.py set_hubstate_isactive_to_true
 
 # Start gunicorn server
-kill $(ps -e | grep gunicorn | awk '{print $1}')
 source ../env/bin/activate && nohup gunicorn --bind 0.0.0.0:8000 --workers 1 homehub.wsgi & disown
 
 # Open Google Chrome
