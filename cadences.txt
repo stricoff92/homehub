@@ -24,7 +24,7 @@ Wulnerabilities cache Refresh
 Daily
 
 Holidays AJAX poling
-Every 20 mins
+Every 5 mins
 
 Holidays Cache Refresh
 daily

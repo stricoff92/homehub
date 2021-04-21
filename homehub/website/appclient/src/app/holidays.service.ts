@@ -12,7 +12,7 @@ export class HolidaysService {
   newHolidayData = new Subject<any>()
   holidayData = []
 
-  refreshInterval = 1000 * 60 * 20
+  refreshInterval = 1000 * 60 * 5
 
   constructor(
     private _api:ApiService
