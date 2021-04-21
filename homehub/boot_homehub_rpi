@@ -49,5 +49,5 @@ set -e
 source ../env/bin/activate && nohup gunicorn --bind 0.0.0.0:8000 --workers 1 homehub.wsgi & disown
 
 # Open Google Chrome
-DISPLAY=:0 chromium-browser http://localhost:8000 --start-fullscreen > /dev/null
+DISPLAY=:0 chromium-browser --app=http://localhost:8000 --kiosk --start-fullscreen > /dev/null
 
