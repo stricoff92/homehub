@@ -17,7 +17,7 @@ export class HolidaysComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.holidayData = this._holiday.holidayData
+    this.holidayData = this._holiday.holidayData.map(this.castToMoment)
     this.newHolidayDataSubscription = this._holiday.newHolidayData.subscribe(data=>{
       this.holidayData = data.map(this.castToMoment)
     })
