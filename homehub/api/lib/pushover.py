@@ -2,7 +2,9 @@
 from django.conf import settings
 import requests
 
-def send_admin_alert(message:str, **data):
+def send_admin_alert(message:str, **data) -> str:
+    if not settings.PUSHOVER_APP_TOKEN:
+        return
     data = {
         "token": settings.PUSHOVER_APP_TOKEN,
         "user": settings.PUSHOVER_USER_TOKEN,
