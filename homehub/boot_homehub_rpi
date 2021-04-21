@@ -14,24 +14,26 @@ SCRIPT_PATH="`dirname \"$0\"`"
 echo "$(date): changing to directory: $SCRIPT_PATH"
 cd "$SCRIPT_PATH"
 
-# Wait for network connection
-tryct=0
-maxtryct=100
-while true; do
-    python3.6 /home/pi/check_connection.py
-    if [ $? -eq 0 ]; then
-    echo "found network connection"
-        break
-    fi
+sleep 5
 
-    tryct=$((tryct+1))
-    if ((tryct > maxtryct)); then
-        echo "$(date): giving up"
-        exit 1
-    fi
-    echo "$(date): Waiting for network connection (Attempt $tryct out of $maxtryct)..."
-    sleep 3
-done
+# # Wait for network connection
+# tryct=0
+# maxtryct=100
+# while true; do
+#     python3.6 /home/pi/check_connection.py
+#     if [ $? -eq 0 ]; then
+#     echo "found network connection"
+#         break
+#     fi
+
+#     tryct=$((tryct+1))
+#     if ((tryct > maxtryct)); then
+#         echo "$(date): giving up"
+#         exit 1
+#     fi
+#     echo "$(date): Waiting for network connection (Attempt $tryct out of $maxtryct)..."
+#     sleep 3
+# done
 
 
 # Crash on any errors
