@@ -32,22 +32,6 @@ done
 # Set hubstate to isactive field to true
 ../env/bin/python manage.py set_hubstate_isactive_to_true
 
-# Pull Source Code
-git pull
-
-# Update Dependancies
-../env/bin/pip install -r ../requirements.txt
-
-# # Build Angular Assets
-# cd website/appclient
-# # npm install
-# npm run-script buildprod
-# cd ..
-# cd ..
-
-# # move static files to static root (for whitenoise)
-# ./manage.py collectstatic
-
 # Start gunicorn server
 source ../env/bin/activate && nohup gunicorn --bind 0.0.0.0:8000 --workers 1 homehub.wsgi & disown
 
